@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Document</title>
+  <title>C0-0C Shortener</title>
 </head>
 <body>
   <div class="container">
-    <h1>URL Shrinker</h1>
+    <h1 class="text-center">C0-0C Shortener</h1>
     <form action="/shortUrls" method="POST" class="my-4 form-inline">
       <label for="fullUrl" class="sr-only">Url</label>
-      <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+      <input required placeholder="Shorten URLs" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
       <button class="btn btn-success" type="submit">Shrink</button>
     </form>
     
@@ -25,13 +25,11 @@
         </tr>
       </thead>
       <tbody>
-        <% shortUrls.forEach(shortUrl => { %>
           <tr>
-            <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
-            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
-            <td><%= shortUrl.clicks %></td>
+            <td><a href="<%= shortUrl1.full %>"><%= shortUrl1.full %></a></td>
+            <td><a href="<%= shortUrl1.short %>"><%= shortUrl1.short %></a></td>
+            <td><%= shortUrl1.clicks %></td>
           </tr>
-        <% }) %>
       </tbody>
     </table>
   </div>
