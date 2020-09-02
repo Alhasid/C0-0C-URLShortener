@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', async (req, res) => {
 
-  res.render('index', {shortUrl1:{full: 0, short: 0, clicks: 0}});
+  res.render('index', {shortUrl1:{full: "-", short: "-", clicks: "-"}});
 });
 
 app.post('/shortUrls', async (req, res) => {
@@ -37,7 +37,7 @@ app.post('/shortUrls', async (req, res) => {
 
 app.get('/:shortUrl', async (req, res) => {
   const shortUrl1 = await ShortUrl.findOne({ short: req.params.shortUrl });
-  if (shortUrl1 == null) return res.sendStatus(404);
+  if (shortUrl1 == null) return res.render('fourofour');
 
   shortUrl1.clicks++
   shortUrl1.save();
