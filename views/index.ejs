@@ -5,33 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="/css/stylesheet.css" rel="stylesheet" type="text/css">
   <title>C0-0C Shortener</title>
 </head>
-<body>
+<body class="d-flex flex-column" style="width: 1690px;">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+  <div class="col-12 py-4 bg-dark text-white">
+    <h1 class="text-center">C0-0C.io</h1>
+    <h2 class="text-center">URL Shortener</h2>
+  </div>
   <div class="container">
-    <h1 class="text-center">C0-0C Shortener</h1>
-    <form action="/shortUrls" method="POST" class="my-4 form-inline">
-      <label for="fullUrl" class="sr-only">Url</label>
-      <input required placeholder="Shorten URLs" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
-      <button class="btn btn-success" type="submit">Shrink</button>
+    <form action="/shortUrls" method="POST" class="my-3 form-inline align-items-center justify-content-center">
+      <div class="input-group mb-3">
+        <label for="fullUrl" class="sr-only">Url</label>
+        <input required placeholder="Shorten URLs" type="url" name="fullUrl" id="fullUrl" class="form-control" style="width: 321px;">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">Shorten</button>
+        </div>
+      </div>
     </form>
-    
-    <table class="table table-striped table-responsive">
-      <thead>
-        <tr>
-          <th>Full URL</th>
-          <th>Short URL</th>
-          <th>Clicks</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="my-3 form-inline align-items-center justify-content-center">
+      <div class="input-group mb-3">
+        <input id="copy2clip" type="url" class="form-control" value="<%= shortUrl1.short %>" style="width: 340px;">
+        <div class="input-group-append">
+          <button id="copybtn" class="btn btn-outline-secondary" style="width: 65px;" type="button" data-clipboard-target="#copy2clip">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 center-block">
+      <table class="table table-striped table-responsive">
+        <thead class="thead-dark">
           <tr>
-            <td><a href="<%= shortUrl1.full %>"><%= shortUrl1.full %></a></td>
-            <td><a href="<%= shortUrl1.short %>"><%= shortUrl1.short %></a></td>
-            <td><%= shortUrl1.clicks %></td>
+            <th class="tablewidths">Full URL</th>
+            <th class="tablewidths">Short URL</th>
+            <th class="tablewidths">Clicks</th>
           </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+            <tr>
+              <td><a href="<%= shortUrl1.full %>"><%= shortUrl1.full %></a></td>
+              <td><a href="<%= shortUrl1.short %>"><%= shortUrl1.short %></a></td>
+              <td><%= shortUrl1.clicks %></td>
+            </tr>
+        </tbody>
+      </table> 
+    </div>
+  </div>
+  <script>
+      var btn = document.getElementById('copybtn');
+      var clipboard = new ClipboardJS(btn);
+
+      clipboard.on('success', function(e) {
+          console.log(e);
+      });
+
+      clipboard.on('error', function(e) {
+          console.log(e);
+      });
+  </script>
+  <div class="footer">
+    <p>Copyright by C0-0C.io</p>
   </div>
 </body>
 </html>
